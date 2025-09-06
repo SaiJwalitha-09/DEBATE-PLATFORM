@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Login with MFA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background: #f5f7fa;
+    }
+    .login-box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+    h2 { margin-bottom: 1rem; }
+    input {
+      width: 100%;
+      padding: 0.6rem; 
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+    }
+    button {
+      width: 100%;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 0.5rem;
+      background: #111;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+    .hidden { display: none; }
+    .msg { font-size: 0.9rem; margin-top: 0.5rem; color: green; }
+    .error { font-size: 0.9rem; margin-top: 0.5rem; color: red; }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Email Login</h2>
+    
+    <!-- Step 1: Email -->
+    <div id="step1">
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <input type="username" id="username" placeholder="Enter your username" required />
+      <input type="password" id="password" placeholder="Enter your password" required />
+      <button onclick="sendCode()">Send Code</button>
+      <p id="msg" class="msg"></p>
+    </div>
+    
+    <!-- Step 2: Code Verification -->
+    <div id="step2" class="hidden">
+      <input type="text" id="code" placeholder="Enter the 6-digit code" maxlength="6" />
+      <button onclick="verifyCode()">Verify & Login</button>
+      <p id="error" class="error"></p>
+    </div>
+  </div>
+
+  <script>
+    let generatedCode = null;
+
+    function sendCode() {
+      const email = document.getElementById("email").value;
+      if (!email) {
+        alert("Please enter your email!");
+        return;
+      }
+
+      // Generate 6-digit random code
+      generatedCode = Math.floor(100000 + Math.random() * 900000);
+
+      // In real app → send this via backend email service (SMTP, Firebase, etc.)
+      document.getElementById("msg").textContent =
+        "Code sent to your email (demo: " + generatedCode + ")";
+      
+      // Show code input step
+      document.getElementById("step1").classList.add("hidden");
+      document.getElementById("step2").classList.remove("hidden");
+    }
+
+    function verifyCode() {
+      const code = document.getElementById("code").value;
+      if (code == generatedCode) {
+        window.location.href = "debate.html"; // redirect to debate page
+      } else {
+        document.getElementById("error").textContent = "Invalid code. Try again.";
+      }
+    }
+  </script>
+</body>
+</html>

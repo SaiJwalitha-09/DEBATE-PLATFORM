@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Debate</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fa;
+      color: #333;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #222;
+      color: #fff;
+    }
+    .badge {
+      background: #16a34a;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+    main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1rem;
+      padding: 1rem 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+    }
+    h2, h3 {
+      margin-top: 0;
+    }
+    .timer {
+      font-size: 2.5rem;
+      margin-top: 0.5rem;
+    }
+    .scoreboard ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .scoreboard li {
+      margin: 0.5rem 0;
+    }
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 0.8rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn-primary {
+      background: #111;
+      color: #fff;
+    }
+    .btn-secondary {
+      background: #ddd;
+    }
+    .flex {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .reactions button {
+      font-size: 1.5rem;
+      background: #eee;
+      padding: 0.5rem 0.8rem;
+      border-radius: 0.5rem;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Debate Room</h1>
+    <span class="badge">LIVE</span>
+  </header>
+
+  <main>
+    <!-- Left column -->
+    <div class="card">
+      <h2>Timer</h2>
+      <p class="timer">120s</p>
+    </div>
+
+    <!-- Right column -->
+    <div class="card scoreboard">
+      <h2>Scoreboard</h2>
+      <ul>
+        <li>Pro: <strong>0</strong></li>
+        <li>Con: <strong>0</strong></li>
+        <li>Abstain: <strong>0</strong></li>
+      </ul>
+    </div>
+
+    <!-- Voting -->
+    <div class="card">
+      <h3>Vote</h3>
+      <div class="flex">
+        <button class="btn btn-primary">Pro</button>
+        <button class="btn btn-primary">Con</button>
+        <button class="btn btn-primary">Abstain</button>
+      </div>
+    </div>
+
+    <!-- Reactions -->
+    <div class="card reactions">
+      <h3>Reactions</h3>
+      <div class="flex">
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+    </div>
+
+    <!-- Moderator controls -->
+    <div class="card">
+      <h3>Moderator</h3>
+      <div class="flex">
+        <button class="btn btn-secondary">Start</button>
+        <button class="btn btn-secondary">Next Turn</button>
+        <button class="btn btn-secondary">Pause</button>
+        <button class="btn btn-secondary">End</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
